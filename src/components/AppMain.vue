@@ -1,11 +1,86 @@
 <script>
+import AppCard from './AppCard.vue';
 export default {
   data() {
     return{
-        content: "--> Content goes here <---",
+        cardList: [
+        {
+          thumb: "https://www.coverbrowser.com/image/action-comics/1-1.jpg",
+          price: "$19.99",
+          series: "Action Comics",
+          type: "comic book"
+        },
+        {
+          thumb: "https://www.panini.it/media/catalog/product/cache/a5b5dd3adfe0d321084804c738f29601/M/1/M1BLLA015ISBN_0.jpg",
+          price: "$3.99",
+          series: "American Vampire 1976",
+          type: "comic book"
+        },
+        {
+          thumb: "https://media.wired.com/photos/593384dad80dd005b42b2817/master/w_2560%2Cc_limit/Aquaman-16.jpg",
+          price: "$16.99",
+          series: "Aquaman",
+          type: "graphic novel"
+        },
+        {
+          thumb: "https://d29xot63vimef3.cloudfront.net/image/batgirl/1-1.jpg",
+          price: "$2.99",
+          series: "Batgirl",
+          type: "comic book"
+        },
+        {
+          thumb: "https://static.posters.cz/image/750/locandine-film-in-plexiglass-batman-prowl-comic-cover-i69653.jpg",
+          price: "$3.99",
+          series: "Batman",
+          type: "comic book"
+        },
+        {
+          thumb: "https://static.wikia.nocookie.net/marvel_dc/images/5/50/Batman_Beyond_v.1_1.jpg",
+          price: "$2.99",
+          series: "Batman Beyond",
+          type: "comic book"
+        },
+        {
+          thumb: "https://static.wikia.nocookie.net/marvel_dc/images/0/0d/Batman_Superman_Vol_1_1.jpg",
+          price: "$3.99",
+          series: "Batman/Superman",
+          type: "comic book"
+        },
+        {
+          thumb: "https://static.wikia.nocookie.net/marvel_dc/images/c/cf/Batman_Superman_Annual_Vol_2_1.jpg",
+          price: "$4.99",
+          series: "Batman/Superman Annual",
+          type: "comic book"
+        },
+        {
+          thumb: "https://static.wikia.nocookie.net/marvel_dc/images/5/54/Batman_The_Joker_War_Zone_Vol_1_1.jpg",
+          price: "$5.99",
+          series: "Batman: The Joker War Zone",
+          type: "comic book"
+        },
+        {
+          thumb: "https://static.wikia.nocookie.net/marvel_dc/images/6/64/Batman_Three_Jokers_Collected.jpg",
+          price: "$6.99",
+          series: "Batman: Three Jokers",
+          type: "comic book"
+        },
+        {
+          thumb: "https://static.wikia.nocookie.net/marvel_dc/images/f/f8/Batman_White_Knight_Presents_Harley_Quinn_Vol_1_1.jpg",
+          price: "$4.99",
+          series: "Batman: White Knight Presents: Harley Quinn",
+          type: "comic book"
+        },
+        {
+          thumb: "https://static.wikia.nocookie.net/marvel_dc/images/c/c8/Catwoman_Vol_2_1.jpg",
+          price: "$16.99",
+          series: "Catwoman",
+          type: "graphic novel"
+        }
+      ]
     }
   },
-  methods: {
+  components: {
+    AppCard,
   }
 }
 
@@ -13,21 +88,58 @@ export default {
 
 <template>
   <div class="main-container">
-    <div class="container">
-        <h2> {{ content }} </h2>
+    <div class="jumbo">
+    </div>
+    <div class="main-card-container">
+      <div class="card-container">
+        <AppCard class="card" v-for="card in cardList" :img="card.thumb" :title="card.series"></AppCard>
+      </div>
+      <button>LOAD MORE</button>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 .main-container {
-    background-color: #1c1c1c;
-    color: white;
-    .container {
-        max-width: 1200px;
-        margin: auto;
-        h2 {
-            padding: 50px;
+  background-color: #1c1c1c;
+  color: white;
+  .jumbo{
+    height: 400px;
+    background-image: url(/img/jumbotron.jpg);
+    background-size: cover;
+  }
+    .main-card-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1300px;
+    margin: auto;
+    padding-top: 100px;
+    gap: 70px;
+    align-items: center;
+      button{
+        padding: 10px 40px;
+        margin-bottom: 30px;
+        background-color: #0282f9;
+        border: 0;
+        color: white;
+        cursor: pointer;
+      }
+      .card-container{
+        display: flex;
+        flex-flow: row wrap;
+        gap: 20px;
+        position: relative;
+        &::before {
+          position: absolute;
+          content: "CURRENT SERIES";
+          background-color: #0282f9;
+          top: -140px;
+          left: -30px;
+          z-index: 2;
+          font-weight: bold;
+          font-size: 30px;
+          padding: 20px 20px;
+          }
         }
     }
 }

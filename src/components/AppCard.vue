@@ -12,9 +12,11 @@ export default {
 </script>
 
 <template>
-  <div class="card">
-    <div class="img-card-container">
-      <img :src="img" alt="">
+  <div class="containerCard">
+    <div class="card">
+      <div class="img-card-container">
+        <img :src="img" alt="">
+      </div>
     </div>
     <div class="card-title">
       {{ title }}
@@ -30,9 +32,7 @@ export default {
   width: 200px;
   height: 250px;
   .img-card-container{
-    width: 100%;
-    height: 100%;
-    background-color: blue;
+    aspect-ratio: 1/1;
     overflow: hidden;
     img {
       width: 100%;
